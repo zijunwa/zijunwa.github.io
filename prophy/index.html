@@ -39,12 +39,12 @@
 <body>
 
 <!-- Under Construction -->
-<div class="notification is-warning is-light" style="margin: 0; border-radius: 0; text-align: center; font-weight: bold; font-size: 1.1em; padding: 1rem; position: sticky; top: 0; z-index: 1000;">
+<!-- <div class="notification is-warning is-light" style="margin: 0; border-radius: 0; text-align: center; font-weight: bold; font-size: 1.1em; padding: 1rem; position: sticky; top: 0; z-index: 1000;">
   <span class="icon">
     <i class="fas fa-exclamation-triangle"></i>
   </span>
   <strong>Page Under Construction</strong>
-</div>
+</div> -->
 
 <section class="hero">
   <div class="hero-body">
@@ -108,7 +108,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href=""
+                <a href="https://www.arxiv.org/abs/2512.05564"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -135,8 +135,9 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -152,6 +153,181 @@
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+    <!-- Framework. -->
+    <h2 class="title is-3 has-text-centered">Method</h2>
+    <div class="carousel method-carousel">
+      <div class="item">
+        <img src="./assets/images/framework.png" class="interpolation-image" alt="ProPhy Framework"/>
+        <p class="content has-text-justified">
+          Overview of our proposed ProPhy framework. ProPhy uses a progressive physical alignment design, consisting of the Semantic Expert Block and the Refinement Expert Block. During inference, the model runs end-to-end and aligns physics categories through our proposed blocks.
+        </p>
+      </div>
+      <div class="item">
+        <img src="./assets/images/token.png" class="interpolation-image" alt="Token-level Attributes"/>
+        <p class="content has-text-justified">
+          Pipeline for annotating token-level physical attributes using a VLM.
+        </p>
+      </div>
+    </div>
+    <!--/ Framework. -->
+  </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">ProPhy Generated Results</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/an_umbrella_catches_the_a293cb.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/car_gliding_over_9d8371.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/cloth_banner_hanging_from_5432e5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/glass_shatters_on_the_50ed0e.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/paddle_mixes_wet_cement_93da56.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/plastic_fidget_spinner_rotatin_349776.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./assets/videos/vis/pro_surfer_sails_smoothly_a8193f.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container">
+    <h2 class="title is-3 has-text-centered">Comparison with Baselines</h2>
+    <div class="columns is-centered has-text-centered is-mobile is-gapless" style="margin-bottom: 10px;">
+      <div class="column"><h5 class="title is-6">CogVideoX</h5></div>
+      <div class="column"><h5 class="title is-6">Wan</h5></div>
+      <div class="column"><h5 class="title is-6">WISA</h5></div>
+      <div class="column"><h5 class="title is-6">VideoREPA</h5></div>
+      <div class="column"><h5 class="title is-6">ProPhy</h5></div>
+    </div>
+    
+    <div class="carousel comparison-carousel">
+      <!-- Group 1: 015 & 023 -->
+      <div class="item">
+        <!-- 015 -->
+        <div class="columns is-gapless is-mobile" style="margin-bottom: 10px;">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/015/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/015/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/015/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/015/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/015/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+        <!-- 023 -->
+        <div class="columns is-gapless is-mobile">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/023/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/023/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/023/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/023/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/023/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+      </div>
+
+      <!-- Group 2: 032 & 033 -->
+      <div class="item">
+        <!-- 032 -->
+        <div class="columns is-gapless is-mobile" style="margin-bottom: 10px;">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/032/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/032/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/032/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/032/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/032/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+        <!-- 033 -->
+        <div class="columns is-gapless is-mobile">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/033/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/033/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/033/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/033/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/033/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+      </div>
+
+      <!-- Group 3: 037 & 043 -->
+      <div class="item">
+        <!-- 037 -->
+        <div class="columns is-gapless is-mobile" style="margin-bottom: 10px;">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/037/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/037/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/037/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/037/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/037/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+        <!-- 043 -->
+        <div class="columns is-gapless is-mobile">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/043/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/043/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/043/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/043/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/043/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+      </div>
+
+      <!-- Group 4: 088 & 100 -->
+      <div class="item">
+        <!-- 088 -->
+        <div class="columns is-gapless is-mobile" style="margin-bottom: 10px;">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/088/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/088/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/088/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/088/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/088/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+        <!-- 100 -->
+        <div class="columns is-gapless is-mobile">
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/100/cogvideox.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/100/wan.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/100/wisa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/100/videorepa.mp4" type="video/mp4"></video></div></div>
+          <div class="column"><div class="video-compare-container"><video poster="" autoplay controls muted loop playsinline><source src="./assets/videos/compare/100/prophy.mp4" type="video/mp4"></video></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
 
 
