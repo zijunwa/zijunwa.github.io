@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProWorld: a multi-view world model with proprioceptive feedback for closed-loop robot policy evaluation.">
+  <meta name="theme-color" content="#f3f6fa">
+  <title>ProWorld · Project Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3f6fa'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23b56b24' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23b56b24'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top">ProWorld</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#videos">Videos</a>
+      <a href="#bibtex">Cite</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost" href="#paper" id="paper-link-header">Paper</a>
+      <a class="btn btn-solid" href="#videos">Watch</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="brand-mark">ProWorld</p>
+        <h1 id="hero-title">Closed-loop policy evaluation with multi-view video and proprioceptive feedback.</h1>
+        <p class="hero-lede">An action-conditioned world model that returns the observations a frozen robot policy needs next—and keeps failed interactions from becoming hallucinated successes.</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#paper" id="paper-link-hero">Read the paper</a>
+          <a class="btn btn-ghost" href="#code" id="code-link-hero">Code soon</a>
+          <a class="btn btn-ghost" href="#videos">Browse videos</a>
+        </div>
+      </div>
+      <figure class="hero-visual">
+        <img src="figures/teaser.png" alt="ProWorld closed-loop evaluation overview and benchmark radar comparison" width="2000" height="551" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="meta-strip" aria-label="Paper metadata">
+      <div class="meta-inner">
+        <p class="meta-title">ProWorld: Multi-View World Model with Proprioceptive Feedback for Closed-Loop Policy Evaluation</p>
+        <p class="authors">
+          Zijun Wang<sup>1,†</sup>,
+          Tianyi Yan<sup>2</sup>,
+          Haokun Lin<sup>3</sup>,
+          Panwen Hu<sup>3</sup>,
+          Bohang He<sup>4</sup>,
+          Siyu Ren<sup>4</sup>,
+          Xiaoyu Guo<sup>5</sup>,
+          Weijia Liufu<sup>1</sup>,
+          Shuoshuo Xue<sup>1</sup>,
+          Fengjiao Chen<sup>4</sup>,
+          Zipeng Ye<sup>4</sup>,
+          Xuezhi Cao<sup>4</sup>,
+          Zutao Jiang,
+          Hanhui Li<sup>1</sup>,
+          Xiaodan Liang<sup>1,3,*</sup>
+        </p>
+        <p class="affils">
+          <span><sup>1</sup>Sun Yat-sen University</span>
+          <span><sup>2</sup>University of Macau</span>
+          <span><sup>3</sup>MBZUAI</span>
+          <span><sup>4</sup>Meituan</span>
+          <span><sup>5</sup>South China University of Technology</span>
+        </p>
+        <p class="notes"><sup>*</sup>Corresponding author · <sup>†</sup>Work done during an internship at Meituan</p>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-head">
+        <p class="eyebrow">Overview</p>
+        <h2>Why world models for policy evaluation?</h2>
+        <p class="section-lede">Physical robot trials are expensive. ProWorld asks whether a learned world model can stand in as a closed-loop test environment whose success rates track the real robot.</p>
+      </div>
+      <div class="overview-grid">
+        <article class="point">
+          <h3>Complete feedback</h3>
+          <p>The policy receives synchronized multi-view images and predicted proprioceptive state after every action, not just a single rendered frame.</p>
+        </article>
+        <article class="point">
+          <h3>Shared-Time View Encoding</h3>
+          <p>STVE keeps camera identity and shared time coordinates without pixel tiling seams or view-dependent temporal offsets.</p>
+        </article>
+        <article class="point">
+          <h3>Failure-aware training</h3>
+          <p>Simulated missed grasps and incomplete contacts reduce interaction hallucinations that inflate generated success rates.</p>
+        </article>
+      </div>
+      <div class="abstract-block" id="paper">
+        <h3>Abstract</h3>
+        <p>Evaluating robot manipulation policies through repeated physical trials is costly. We study whether an action-conditioned world model can serve as a closed-loop test environment whose policy success rates track those on real robots. Beyond realistic video, the model must return the camera views and proprioceptive state needed for the policy's next action and preserve failed-action outcomes to avoid overestimating policy capability. We introduce ProWorld, a world model that jointly predicts multi-view video and robot state, then feeds both back to a frozen policy for repeated interaction. ProWorld comprises a shared transformer for joint video–state flow prediction and Shared-Time View Encoding to distinguish cameras while preserving temporal synchronization. To reduce interaction hallucinations that turn missed grasps into successful lifts, we augment training with failed interactions collected in high-fidelity simulation, reducing inflated success rates in the generated environment. ProWorld achieves the highest overall TriWorldBench score among the compared methods. Across three policies and four local manipulation tasks, it attains a Pearson correlation of 0.95 and a Spearman correlation of 0.94 between generated and real success rates.</p>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="section-head">
+        <p class="eyebrow">Method</p>
+        <h2>Joint video–state prediction in a closed loop</h2>
+        <p class="section-lede">ProWorld is the environment in a repeated observe–act loop. Only the initial observation comes from the real world; afterward, the frozen policy acts on generated images and predicted state.</p>
+      </div>
+      <figure class="figure-block reveal">
+        <img src="figures/framework_and_multiview.png" alt="ProWorld architecture and comparison of multi-view organizations" width="2000" height="900" loading="lazy">
+        <figcaption>Architecture and multi-view organization. Metadata, independently encoded camera streams, and proprioceptive state enter a shared transformer; STVE preserves shared time and per-view spatial structure.</figcaption>
+      </figure>
+      <figure class="figure-block reveal">
+        <img src="figures/stage_and_attention.png" alt="Training stages and attention visibility masks" width="2000" height="700" loading="lazy">
+        <figcaption>Training progresses from bidirectional video–state learning to autoregressive teacher forcing, domain adaptation, and distillation.</figcaption>
+      </figure>
+      <figure class="figure-block reveal">
+        <img src="figures/failure_dataset.png" alt="Success and failure examples from simulation data" width="2000" height="700" loading="lazy">
+        <figcaption>Success and failure examples from GenieSim. Failed interactions supply the missing supervision for contact outcomes that demonstrations rarely show.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="results">
+      <div class="section-head">
+        <p class="eyebrow">Results</p>
+        <h2>Generated success rates track the real robot</h2>
+        <p class="section-lede">Across three policies and four local tasks, ProWorld reaches Pearson <em>r</em> = 0.95 and Spearman <em>ρ</em> = 0.94 with physical success rates, and leads TriWorldBench among the compared methods.</p>
+      </div>
+      <div class="metric-row" aria-label="Key metrics">
+        <div class="metric">
+          <span class="metric-value">0.95</span>
+          <span class="metric-label">Pearson correlation</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0.94</span>
+          <span class="metric-label">Spearman correlation</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">53.68</span>
+          <span class="metric-label">TriWorldBench score</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">~6.5k h</span>
+          <span class="metric-label">Pretraining data</span>
+        </div>
+      </div>
+      <figure class="figure-block reveal">
+        <img src="figures/world_model_success_correlations.png" alt="Correlation between real and generated policy success rates" width="2000" height="700" loading="lazy">
+        <figcaption>Policy success in the real and generated worlds. Failure-data training improves outcome agreement and reduces overestimation at low real success rates.</figcaption>
+      </figure>
+      <figure class="figure-block reveal">
+        <img src="figures/vis_compare.png" alt="Closed-loop visual comparison after roughly 20 seconds" width="2000" height="900" loading="lazy">
+        <figcaption>Closed-loop visual comparison after roughly 20 seconds. Failure-aware training preserves contact and object persistence that baselines lose.</figcaption>
+      </figure>
+      <figure class="figure-block reveal">
+        <img src="figures/success_and_failure.png" alt="Generated three-view successes and failures" width="2000" height="900" loading="lazy">
+        <figcaption>Generated three-view successes and failures. Empty lifts leave objects behind; incomplete grasps produce incomplete folds.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-head">
+        <p class="eyebrow">Videos</p>
+        <h2>Open-loop, closed-loop, and failure data</h2>
+        <p class="section-lede">Switch among the three collections below. Closed-loop clips show frozen policies interacting with ProWorld; GenieSim clips are training-data examples, not model generations.</p>
+      </div>
+
+      <div class="video-tabs" role="tablist" aria-label="Video collections">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="open">
+          <span class="tab-kicker">Collection</span>
+          <span class="tab-title">Open-loop rollouts</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="close">
+          <span class="tab-kicker">Collection</span>
+          <span class="tab-title">Closed-loop evaluation</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="fail">
+          <span class="tab-kicker">Collection</span>
+          <span class="tab-title">GenieSim success &amp; failure</span>
+        </button>
+      </div>
+
+      <div class="video-panel is-active" data-panel="open" role="tabpanel">
+        <div class="video-grid">
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/open-loop-01.jpg" width="1152" height="288"><source src="media/open-loop-01.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Open-loop 01</h3><span>0:40</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/open-loop-02.jpg" width="1152" height="288"><source src="media/open-loop-02.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Open-loop 02</h3><span>0:41</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/open-loop-03.jpg" width="1152" height="288"><source src="media/open-loop-03.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Open-loop 03</h3><span>0:21</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/open-loop-04.jpg" width="1152" height="288"><source src="media/open-loop-04.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Open-loop 04</h3><span>0:32</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/open-loop-05.jpg" width="1440" height="288"><source src="media/open-loop-05.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Open-loop 05</h3><span>0:24</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="video-panel" data-panel="close" role="tabpanel" hidden>
+        <div class="task-block">
+          <h3 class="task-label">Task 1 · Videos 1–3</h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-01.jpg" width="1152" height="288"><source src="media/close-loop-01.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 01</h3><span class="badge fail">Failure</span><span>0:28</span></div>
+              <p class="obs">Hesitates and continues holding the plate without releasing it.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-02.jpg" width="1152" height="288"><source src="media/close-loop-02.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 02</h3><span class="badge fail">Failure</span><span>0:27</span></div>
+              <p class="obs">Fails to grasp the ping-pong ball with the correct pose.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-03.jpg" width="1152" height="288"><source src="media/close-loop-03.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 03</h3><span class="badge ok">Success</span><span>1:09</span></div>
+              <p class="obs">Successfully completes the task.</p>
+            </article>
+          </div>
+        </div>
+        <div class="task-block">
+          <h3 class="task-label">Task 2 · Shoe placement</h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-04.jpg" width="1152" height="288"><source src="media/close-loop-04.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 04</h3><span class="badge ok">Success</span><span>1:17</span></div>
+              <p class="obs">Successfully places all four shoes on the shoe rack.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-05.jpg" width="1152" height="288"><source src="media/close-loop-05.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 05</h3><span class="badge fail">Failure</span><span>1:05</span></div>
+              <p class="obs">Places a shoe outside the shoe rack.</p>
+            </article>
+          </div>
+        </div>
+        <div class="task-block">
+          <h3 class="task-label">Task 3 · Trash cleanup</h3>
+          <div class="video-grid">
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-06.jpg" width="1152" height="288"><source src="media/close-loop-06.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 06</h3><span class="badge fail">Failure</span><span>1:02</span></div>
+              <p class="obs">Fails to terminate after clearing the trash, leaving tools unreturned.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="none" poster="media/close-loop-07.jpg" width="1152" height="288"><source src="media/close-loop-07.mp4" type="video/mp4"></video>
+              <div class="video-caption"><h3>Video 07</h3><span class="badge ok">Success</span><span>1:05</span></div>
+              <p class="obs">Correctly determines when to stop.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-panel" data-panel="fail" role="tabpanel" hidden>
+        <p class="panel-note">These clips are examples from the GenieSim success/failure collection used in training, not videos generated by ProWorld.</p>
+        <div class="video-grid outcomes">
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-01.jpg" width="640" height="480"><source src="media/failure-data-01.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 01</h3><span class="badge fail">Failure</span><span>0:16</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-02.jpg" width="640" height="480"><source src="media/failure-data-02.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 02</h3><span class="badge fail">Failure</span><span>0:16</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-03.jpg" width="640" height="480"><source src="media/failure-data-03.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 03</h3><span class="badge ok">Success</span><span>0:16</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-04.jpg" width="640" height="480"><source src="media/failure-data-04.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 04</h3><span class="badge ok">Success</span><span>0:16</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-05.jpg" width="640" height="480"><source src="media/failure-data-05.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 05</h3><span class="badge fail">Failure</span><span>0:07</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-06.jpg" width="640" height="480"><source src="media/failure-data-06.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 06</h3><span class="badge ok">Success</span><span>0:07</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-07.jpg" width="640" height="480"><source src="media/failure-data-07.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 07</h3><span class="badge ok">Success</span><span>0:17</span></div>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="none" poster="media/failure-data-08.jpg" width="640" height="480"><source src="media/failure-data-08.mp4" type="video/mp4"></video>
+            <div class="video-caption"><h3>Example 08</h3><span class="badge fail">Failure</span><span>0:16</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="code">
+      <div class="section-head">
+        <p class="eyebrow">Resources</p>
+        <h2>Paper, code, and models</h2>
+        <p class="section-lede">Core implementation modules for both Wan and MiniMax-H3 backbones are prepared. Full training pipelines, weights, and the failure dataset are being readied for release.</p>
+      </div>
+      <div class="resource-row">
+        <a class="resource" href="#paper" id="paper-link-resources">
+          <span class="resource-kicker">Paper</span>
+          <strong>arXiv preprint</strong>
+          <span class="resource-meta">Link will be updated after upload</span>
+        </a>
+        <a class="resource" href="#" id="code-link-resources" aria-disabled="true">
+          <span class="resource-kicker">Code</span>
+          <strong>GitHub repository</strong>
+          <span class="resource-meta">Coming soon</span>
+        </a>
+        <a class="resource" href="#videos">
+          <span class="resource-kicker">Videos</span>
+          <strong>Qualitative gallery</strong>
+          <span class="resource-meta">Open-loop, closed-loop, GenieSim</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="bibtex">
+      <div class="section-head">
+        <p class="eyebrow">Citation</p>
+        <h2>BibTeX</h2>
+      </div>
+      <div class="bib-wrap">
+        <button class="copy-btn" type="button" id="copy-bib" aria-live="polite">Copy</button>
+        <pre id="bibtex-block"><code>@article{wang2026proworld,
+  title   = {ProWorld: Multi-View World Model with Proprioceptive Feedback for Closed-Loop Policy Evaluation},
+  author  = {Wang, Zijun and Yan, Tianyi and Lin, Haokun and Hu, Panwen and He, Bohang and Ren, Siyu and Guo, Xiaoyu and Liufu, Weijia and Xue, Shuoshuo and Chen, Fengjiao and Ye, Zipeng and Cao, Xuezhi and Jiang, Zutao and Li, Hanhui and Liang, Xiaodan},
+  year    = {2026},
+  note    = {arXiv preprint}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>ProWorld</strong>
+      <span>Project page for the preprint.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+      <a href="#bibtex">Cite</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
