@@ -72,8 +72,8 @@
     });
   }
 
-  // Optional: set these after arXiv / GitHub are ready.
-  // window.PROWORLD_LINKS = { paper: "https://arxiv.org/abs/xxxx.xxxxx", code: "https://github.com/..." };
+  // Optional overrides for the published paper link and future code release.
+  // window.PROWORLD_LINKS = { paper: "https://arxiv.org/abs/2610.15294", code: "https://github.com/..." };
   const links = window.PROWORLD_LINKS || {};
   const applyLink = (id, href, label) => {
     const el = document.getElementById(id);

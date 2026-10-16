@@ -23,12 +23,14 @@ Then open http://127.0.0.1:8766
 
 ## Paper / code links
 
-After arXiv and GitHub are ready, inject links before `app.js` in `index.html`:
+The paper is available at https://arxiv.org/abs/2610.15294. All three paper links are set directly in `index.html` so they also work without JavaScript.
+
+To override links or add the GitHub repository when it is ready, inject links before `app.js` in `index.html`:
 
 ```html
 <script>
   window.PROWORLD_LINKS = {
-    paper: "https://arxiv.org/abs/XXXX.XXXXX",
+    paper: "https://arxiv.org/abs/2610.15294",
     code: "https://github.com/ORG/REPO"
   };
 </script>
